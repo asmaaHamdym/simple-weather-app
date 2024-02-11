@@ -1,5 +1,5 @@
 # Weather in your City
-## Using vanilla *JavaScript* and this [**weather API**](https://www.shecodes.io/learn/apis/weather) to fetch data
+## Using vanilla *JavaScript* and this [**weather API**](https://www.shecodes.io/learn/apis/weather)
 
 - [ ] using Axious to fetch the data.
 - [ ] Displaying weather and time real data.
