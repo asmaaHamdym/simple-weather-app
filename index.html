@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Weather App</title>
+    <link rel="stylesheet" href="/styles/styles.css" />
+  </head>
+  <body>
+    <div class="main">
+      <header>
+        <input class="header-group" type="text" placeholder="Enter a city.." />
+        <button class="header-group">Search</button>
+      </header>
+      <section class="weather-display">
+        <div class="left-col">
+          <h1 class="current-city">Cairo</h1>
+          <p>
+            Saturday 15:32, moderate rain
+            <br />
+            Humidity: <span class="Humidity">92%</span>, Wind:
+            <span class="Wind">1.54km/h</span>
+          </p>
+        </div>
+        <div class="right-col">
+          <span class="temperature-emoji">⛅️</span>
+          <span class="temperature"
+            >21 <sup class="temperature-unit">°C</sup></span
+          >
+        </div>
+      </section>
+
+      <footer>
+        <p>
+          This project was coded by <a href="#">Asma Hamdy</a> and is
+          <a href="#">on GitHub</a> and
+          <a href="#">hosted on Netlify.</a>
+        </p>
+      </footer>
+    </div>
+    <script src="/scripts/index.js"></script>
+  </body>
+</html>
