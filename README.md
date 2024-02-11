@@ -1,8 +1,7 @@
 # Weather in your City
 ## Using vanilla *JavaScript* and this [**weather API**](https://www.shecodes.io/learn/apis/weather) to fetch data
 
-- [x] using Axious to fetch the data.
-
+- [ ] using Axious to fetch the data.
 - [ ] Displaying weather and time real data.
 
 * using this readme to learn **MarkDowm**
