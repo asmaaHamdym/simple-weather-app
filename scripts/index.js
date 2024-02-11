@@ -1,8 +1,22 @@
+function displayWeather(response) {
+  const description = response.data.condition.description;
+  const temperature = Math.round(response.data.temperature.current);
+  const humidity = response.data.temperature.humidity;
+  const weatherEmoji = response.data.condition.icon_url;
+  const wind = response.data.wind.speed;
+  cityElement.textContent = `${response.data.city}, ${response.data.country}`;
+  iconELement.innerHTML = `<img src="${weatherEmoji}">`;
+  temperatureELement.textContent = temperature;
+  descriptionELement.textContent = description;
+  humidityELement.textContent = `${humidity}%`;
+  windELement.textContent = `${wind} km/h`;
+}
 function search(event) {
   event.preventDefault();
-  let searchInputElement = document.querySelector("#search-input");
-  let cityElement = document.querySelector("#current-city");
-  cityElement.innerHTML = searchInputElement.value;
+  const city = searchInputElement.value;
+  const url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+
+  axios.get(url).then(displayWeather);
 }
 
 function formatDate(date) {
@@ -31,11 +45,19 @@ function formatDate(date) {
   let formattedDay = days[day];
   return `${formattedDay} ${hours}:${minutes}`;
 }
-
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
 
-let currentDateELement = document.querySelector("#current-date");
-let currentDate = new Date();
+const currentDate = new Date();
+const currentDateELement = document.querySelector("#current-date");
+const searchInputElement = document.querySelector("#search-input");
+const cityElement = document.querySelector("#current-city");
+const iconELement = document.querySelector(".current-temperature-icon");
+const temperatureELement = document.querySelector(".current-temperature-value");
+const descriptionELement = document.querySelector("#description");
+const humidityELement = document.querySelector("#humidity");
+const windELement = document.querySelector("#wind");
 
 currentDateELement.innerHTML = formatDate(currentDate);
+
+const apiKey = "3c9b157d324o427adbae47ft0a08477e";
