@@ -11,6 +11,6 @@
 ```
 console.log('Hello World!');
 ```
-[](![image](https://github.com/asmaaHamdym/simple-weather-app/assets/120820983/a8e95d78-482e-4cd1-9466-ba23932d4f88)
+[Picture](![image](https://github.com/asmaaHamdym/simple-weather-app/assets/120820983/a8e95d78-482e-4cd1-9466-ba23932d4f88)
 )
 
