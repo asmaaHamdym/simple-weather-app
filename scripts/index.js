@@ -1,4 +1,12 @@
 function displayWeather(response) {
+  const status = response.data.status;
+
+  if (status === `not_found`) {
+    mainDisplay.style.display = "none";
+    errorDisplay.innerHTML = `<h1>Can't find this city! 🤷‍♀️</h1>`;
+    return;
+  }
+
   const description = response.data.condition.description;
   const temperature = Math.round(response.data.temperature.current);
   const humidity = response.data.temperature.humidity;
@@ -10,6 +18,8 @@ function displayWeather(response) {
   descriptionELement.textContent = description;
   humidityELement.textContent = `${humidity}%`;
   windELement.textContent = `${wind} km/h`;
+
+  errorDisplay.innerHTML = ``;
   mainDisplay.style.display = "block";
 }
 function search(event) {
@@ -55,6 +65,7 @@ const temperatureELement = document.querySelector(".current-temperature-value");
 const descriptionELement = document.querySelector("#description");
 const humidityELement = document.querySelector("#humidity");
 const windELement = document.querySelector("#wind");
+const errorDisplay = document.querySelector(".errorDisplay");
 
 const searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", search);
