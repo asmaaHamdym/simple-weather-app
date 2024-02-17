@@ -74,7 +74,7 @@ main {
 
 .current-temperature-icon {
   position: relative;
-  /* top: -4px; */
+  top: 12px;
   font-size: 40px;
   margin-right: 10px;
 }
@@ -88,6 +88,11 @@ main {
   font-size: 28px;
   position: relative;
   top: -38px;
+}
+.errorDisplay {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 900;
 }
 
 footer {

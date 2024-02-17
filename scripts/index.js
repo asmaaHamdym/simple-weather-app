@@ -1,6 +1,5 @@
 function displayWeather(response) {
   const status = response.data.status;
-
   if (status === `not_found`) {
     mainDisplay.style.display = "none";
     errorDisplay.innerHTML = `<h1>Can't find this city! 🤷‍♀️</h1>`;
