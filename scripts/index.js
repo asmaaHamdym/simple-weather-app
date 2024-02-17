@@ -10,6 +10,7 @@ function displayWeather(response) {
   descriptionELement.textContent = description;
   humidityELement.textContent = `${humidity}%`;
   windELement.textContent = `${wind} km/h`;
+  mainDisplay.style.display = "block";
 }
 function search(event) {
   event.preventDefault();
@@ -45,10 +46,7 @@ function formatDate(date) {
   let formattedDay = days[day];
   return `${formattedDay} ${hours}:${minutes}`;
 }
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", search);
-
-const currentDate = new Date();
+const mainDisplay = document.querySelector("main");
 const currentDateELement = document.querySelector("#current-date");
 const searchInputElement = document.querySelector("#search-input");
 const cityElement = document.querySelector("#current-city");
@@ -58,6 +56,10 @@ const descriptionELement = document.querySelector("#description");
 const humidityELement = document.querySelector("#humidity");
 const windELement = document.querySelector("#wind");
 
+const searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", search);
+
+const currentDate = new Date();
 currentDateELement.innerHTML = formatDate(currentDate);
 
 const apiKey = "3c9b157d324o427adbae47ft0a08477e";
