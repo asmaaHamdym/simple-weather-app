@@ -11,12 +11,14 @@ function updateWeather(response) {
     errorDisplay.innerHTML = `<h1>Can't find this city! 🤷‍♀️</h1>`;
     return;
   }
+  const date = new Date(response.data.time * 1000);
+  currentDateELement.innerHTML = formatDate(date);
 
-  const description = response.data.condition.description;
-  descriptionELement.textContent = description;
+  descriptionELement.textContent = response.data.condition.description;
 
-  const temperature = Math.round(response.data.temperature.current);
-  temperatureELement.textContent = temperature;
+  temperatureELement.textContent = Math.round(
+    response.data.temperature.current
+  );
 
   const humidity = response.data.temperature.humidity;
   humidityELement.textContent = `${humidity}%`;
@@ -41,7 +43,6 @@ function handleSearchSubmit(event) {
 function formatDate(date) {
   let minutes = date.getMinutes();
   let hours = date.getHours();
-  let day = date.getDay();
 
   if (minutes < 10) {
     minutes = `0${minutes}`;
@@ -60,9 +61,9 @@ function formatDate(date) {
     "Friday",
     "Saturday",
   ];
+  let day = days[date.getDay()];
 
-  let formattedDay = days[day];
-  return `${formattedDay} ${hours}:${minutes}`;
+  return `${day} ${hours}:${minutes}`;
 }
 const mainDisplay = document.querySelector("main");
 const currentDateELement = document.querySelector("#current-date");
@@ -78,5 +79,4 @@ const errorDisplay = document.querySelector(".errorDisplay");
 const searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
 
-const currentDate = new Date();
-currentDateELement.innerHTML = formatDate(currentDate);
+// const currentDate = new Date();
