@@ -1,3 +1,9 @@
+function getWeatherData(city) {
+  const apiKey = "3c9b157d324o427adbae47ft0a08477e";
+  const url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(url).then(updateWeather);
+}
+
 function updateWeather(response) {
   const status = response.data.status;
   if (status === `not_found`) {
@@ -24,9 +30,7 @@ function updateWeather(response) {
 function handleSearchSubmit(event) {
   event.preventDefault();
   const city = searchInputElement.value;
-  const apiKey = "3c9b157d324o427adbae47ft0a08477e";
-  const url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-  axios.get(url).then(updateWeather);
+  getWeatherData(city);
 }
 
 function formatDate(date) {
