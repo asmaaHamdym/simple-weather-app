@@ -13,16 +13,21 @@ function updateWeather(response) {
   }
 
   const description = response.data.condition.description;
-  const temperature = Math.round(response.data.temperature.current);
-  const humidity = response.data.temperature.humidity;
-  const weatherEmoji = response.data.condition.icon_url;
-  const wind = response.data.wind.speed;
-  cityElement.textContent = `${response.data.city}, ${response.data.country}`;
-  iconELement.innerHTML = `<img src="${weatherEmoji}">`;
-  temperatureELement.textContent = temperature;
   descriptionELement.textContent = description;
+
+  const temperature = Math.round(response.data.temperature.current);
+  temperatureELement.textContent = temperature;
+
+  const humidity = response.data.temperature.humidity;
   humidityELement.textContent = `${humidity}%`;
+
+  const weatherEmoji = response.data.condition.icon_url;
+  iconELement.innerHTML = `<img src="${weatherEmoji}">`;
+
+  const wind = response.data.wind.speed;
   windELement.textContent = `${wind} km/h`;
+
+  cityElement.textContent = `${response.data.city}, ${response.data.country}`;
 
   errorDisplay.innerHTML = ``;
   mainDisplay.style.display = "block";
