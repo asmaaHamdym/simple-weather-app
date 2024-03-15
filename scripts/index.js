@@ -47,7 +47,11 @@ function updateWeather(response) {
 
   windELement.textContent = `${response.data.wind.speed} km/h`;
 
-  cityElement.textContent = `${response.data.city}, ${response.data.country}`;
+  cityElement.textContent = `${response.data.city}${
+    hasMoreThanOneWord(response.data.country)
+      ? ""
+      : ", " + response.data.country
+  }`;
 
   errorDisplay.innerHTML = ``;
   mainDisplay.style.display = "block";
@@ -64,6 +68,9 @@ function getForecast(city) {
     const forecastDays = res.data.daily.slice(0, 5);
     displayForecast(forecastDays);
   });
+}
+function hasMoreThanOneWord(str) {
+  return str.split(" ").length > 1;
 }
 
 function handleSearchSubmit(event) {
