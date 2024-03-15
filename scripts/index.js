@@ -24,6 +24,7 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 function updateWeather(response) {
+  console.log(response.data);
   const status = response.data.status;
   if (status === `not_found`) {
     mainDisplay.style.display = "none";
