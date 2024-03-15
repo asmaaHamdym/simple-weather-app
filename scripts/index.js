@@ -62,6 +62,23 @@ function handleSearchSubmit(event) {
   const city = searchInputElement.value;
   getWeatherData(city);
 }
+const displayForecast = () => {
+  const days = ["sat", "sun", "mon", "tue"];
+  days.forEach((day) => {
+    const divDay = document.createElement("div");
+    divDay.innerHTML = `<div class="weather-forecast-col">
+              <div class="weather-forecast-date">${day}</div>
+              <div class="weather-forecast-icon">🌤️</div>
+              <div class="weather-forecast-temperatures">
+                <div class="weather-forecast-temperature">
+                  <strong>15º</strong>
+                </div>
+                <div class="weather-forecast-temperature">9º</div>
+              </div>
+            </div>`;
+    forecastElement.appendChild(divDay);
+  });
+};
 
 const mainDisplay = document.querySelector("main");
 const currentDateELement = document.querySelector("#current-date");
@@ -75,16 +92,8 @@ const windELement = document.querySelector("#wind");
 const errorDisplay = document.querySelector(".errorDisplay");
 
 const forecastElement = document.getElementById("forecast");
-forecastElement.innerHTML = `<div class="weather-forecast-col">
-            <div class="weather-forecast-date">Tue</div>
-            <div class="weather-forecast-icon">🌤️</div>
-            <div class="weather-forecast-temperatures">
-              <div class="weather-forecast-temperature">
-                <strong>15º</strong>
-              </div>
-              <div class="weather-forecast-temperature">9º</div>
-            </div>
-          </div>`;
 
 const searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
+
+displayForecast();

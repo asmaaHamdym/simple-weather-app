@@ -94,7 +94,7 @@ main {
   font-size: 28px;
   font-weight: 900;
 }
-.weather-forecast {
+#forecast {
   margin-top: 30px;
   display: flex;
   justify-content: space-around;
