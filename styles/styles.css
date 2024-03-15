@@ -99,6 +99,9 @@ main {
   display: flex;
   justify-content: space-around;
 }
+.weather-forcast-col {
+  flex-direction: column;
+}
 .weather-forecast-date {
   text-align: center;
   color: rgba(39, 33, 66, 0.4);

@@ -74,5 +74,17 @@ const humidityELement = document.querySelector("#humidity");
 const windELement = document.querySelector("#wind");
 const errorDisplay = document.querySelector(".errorDisplay");
 
+const forecastElement = document.getElementById("forecast");
+forecastElement.innerHTML = `<div class="weather-forecast-col">
+            <div class="weather-forecast-date">Tue</div>
+            <div class="weather-forecast-icon">🌤️</div>
+            <div class="weather-forecast-temperatures">
+              <div class="weather-forecast-temperature">
+                <strong>15º</strong>
+              </div>
+              <div class="weather-forecast-temperature">9º</div>
+            </div>
+          </div>`;
+
 const searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
