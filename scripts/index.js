@@ -1,4 +1,6 @@
-function formatDate(date) {
+function formatDate(dateString) {
+  const date = new Date(dateString * 1000);
+
   let minutes = date.getMinutes();
   let hours = date.getHours();
 
@@ -21,7 +23,7 @@ function formatDate(date) {
   ];
   let day = days[date.getDay()];
 
-  return `${day} ${hours}:${minutes}`;
+  return { day, hours, minutes };
 }
 function updateWeather(response) {
   const status = response.data.status;
@@ -30,8 +32,8 @@ function updateWeather(response) {
     errorDisplay.innerHTML = `<h1>Can't find this city! 🤷‍♀️</h1>`;
     return;
   }
-  const date = new Date(response.data.time * 1000);
-  currentDateELement.innerHTML = formatDate(date);
+  const dateObj = formatDate(response.data.time);
+  currentDateELement.innerHTML = `${dateObj.day} ${dateObj.hours}:${dateObj.minutes}`;
 
   descriptionELement.textContent = response.data.condition.description;
 
@@ -59,7 +61,8 @@ function getForecast(city) {
   const apiKey = "3c9b157d324o427adbae47ft0a08477e";
   const url = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
   axios.get(url).then((res) => {
-    console.log(res.data.daily);
+    const forecastDays = res.data.daily.slice(0, 5);
+    displayForecast(forecastDays);
   });
 }
 
@@ -69,18 +72,25 @@ function handleSearchSubmit(event) {
   getWeatherData(city);
   getForecast(city);
 }
-const displayForecast = () => {
-  const days = ["sat", "sun", "mon", "tue"];
-  days.forEach((day) => {
-    const divDay = document.createElement("div");
+const displayForecast = (fiveDaysForecastArr) => {
+  forecastElement.innerHTML = "";
+
+  fiveDaysForecastArr.forEach((dayData) => {
+    let divDay = document.createElement("div");
     divDay.innerHTML = `<div class="weather-forecast-col">
-              <div class="weather-forecast-date">${day}</div>
-              <div class="weather-forecast-icon">🌤️</div>
+              <div class="weather-forecast-date">${formatDate(
+                dayData.time
+              ).day.slice(0, 3)}</div>
+              <img class="weather-forecast-icon" src="${
+                dayData.condition.icon_url
+              }">
               <div class="weather-forecast-temperatures">
                 <div class="weather-forecast-temperature">
-                  <strong>15º</strong>
+                  <strong>${Math.round(dayData.temperature.maximum)}º</strong>
                 </div>
-                <div class="weather-forecast-temperature">9º</div>
+                <div class="weather-forecast-temperature">${Math.round(
+                  dayData.temperature.minimum
+                )}º</div>
               </div>
             </div>`;
     forecastElement.appendChild(divDay);
@@ -102,5 +112,3 @@ const forecastElement = document.getElementById("forecast");
 
 const searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", handleSearchSubmit);
-
-displayForecast();
