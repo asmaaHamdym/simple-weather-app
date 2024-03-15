@@ -24,7 +24,6 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 function updateWeather(response) {
-  console.log(response.data);
   const status = response.data.status;
   if (status === `not_found`) {
     mainDisplay.style.display = "none";
@@ -56,11 +55,19 @@ function getWeatherData(city) {
   const url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
   axios.get(url).then(updateWeather);
 }
+function getForecast(city) {
+  const apiKey = "3c9b157d324o427adbae47ft0a08477e";
+  const url = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(url).then((res) => {
+    console.log(res.data.daily);
+  });
+}
 
 function handleSearchSubmit(event) {
   event.preventDefault();
   const city = searchInputElement.value;
   getWeatherData(city);
+  getForecast(city);
 }
 const displayForecast = () => {
   const days = ["sat", "sun", "mon", "tue"];
