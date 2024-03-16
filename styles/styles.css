@@ -115,9 +115,10 @@ footer {
   margin: 5px 10px;
 }
 .weather-forecast-icon {
-  width: 60px;
-  text-align: center;
-  margin-left: 10px;
+  width: 88px;
+  height: 88px;
+  display: block;
+  margin: 0 auto;
 }
 .weather-forecast-temperatures {
   text-align: center;
