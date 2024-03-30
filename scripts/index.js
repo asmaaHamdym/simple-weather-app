@@ -27,6 +27,7 @@ function getForecast(city) {
   const url = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
   axios.get(url).then((res) => {
     const forecastDays = res.data.daily.slice(0, 5);
+    m;
     displayForecast(forecastDays);
   });
 }
@@ -82,7 +83,7 @@ function updateWeather(response) {
   iconELement.src = response.data.condition.icon_url;
 
   windELement.textContent = `${response.data.wind.speed} km/h`;
-
+  // don't display country if it has more than two words
   cityElement.textContent = `${response.data.city}${
     hasMoreThanOneWord(response.data.country)
       ? ""
