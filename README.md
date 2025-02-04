@@ -3,6 +3,7 @@
 
 - [ ] using Axious to fetch the data.
 - [ ] Displaying weather and time real data.
+- [ ] Displaying 5-day forecast with humidity and wind.
 
 * using this readme to learn **MarkDowm**
 * Could you tell?
